@@ -10,8 +10,8 @@ func NewGetEnvironmentRequest(projectID string) *GetEnvironmentRequest {
 	}
 }
 
-func (r *GetEnvironmentRequest) ToRequest() (*map[string]interface{}, error) {
-	return &map[string]interface{}{
+func (r *GetEnvironmentRequest) ToRequest() (map[string]interface{}, error) {
+	return map[string]interface{}{
 		"query": `query GetEnvironment($projectID: ObjectID!) {
 			environments(projectID: $projectID) {
 				_id

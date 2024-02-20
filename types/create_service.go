@@ -20,8 +20,8 @@ func NewCreateServiceRequest(projectID string, serviceName string) *CreateServic
 	}
 }
 
-func (r *CreateServiceRequest) ToRequest() (*map[string]interface{}, error) {
-	return &map[string]interface{}{
+func (r *CreateServiceRequest) ToRequest() (map[string]interface{}, error) {
+	return map[string]interface{}{
 		"query": `mutation CreateService($projectID: ObjectID!, $template: ServiceTemplate!, $serviceName: String!) {
 			createService(projectID: $projectID, template: $template, name: $serviceName) {
 				_id

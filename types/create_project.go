@@ -17,8 +17,8 @@ func NewCreateProjectRequest(region Region) *CreateProjectRequest {
 	}
 }
 
-func (r *CreateProjectRequest) ToRequest() (*map[string]interface{}, error) {
-	return &map[string]interface{}{
+func (r *CreateProjectRequest) ToRequest() (map[string]interface{}, error) {
+	return map[string]interface{}{
 		"query": `mutation CreateProject($region: String!) {
 			createProject(region: $region) {
 				_id
