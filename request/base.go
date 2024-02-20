@@ -27,7 +27,8 @@ func doRequest[RequestT types.ToGraphQLRequest, ResponseWrapper any](
 	}
 	bodyReader = bytes.NewBuffer(bs)
 
-	req, err := http.NewRequestWithContext(ctx, "POST", c.apiPath.String(), bodyReader)
+	url := fmt.Sprintf("%s/graphql", c.apiPath.String())
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
 		return nil, err
 	}

@@ -5,7 +5,7 @@ import (
 	"net/url"
 )
 
-const API_PATH = "https://gateway.zeabur.com/graphql"
+const API_PATH = "https://gateway.zeabur.com"
 
 type Client struct {
 	apiKey     string
