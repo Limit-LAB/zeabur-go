@@ -21,8 +21,8 @@ var _ ToGraphQLRequest = (*CreateDomainRequest)(nil)
 func (r *CreateDomainRequest) ToRequest() (map[string]interface{}, error) {
 	return map[string]interface{}{
 		"query": `mutation CreateDomain($serviceID: ObjectID!, $environmentID: ObjectID!, $domain: String!, $isGenerated: Boolean!) {
-			createDomain(serviceID: $serviceID, environmentID: $environmentID, domain: $domain, isGenerated: $isGenerated) {
-				_id
+			addDomain(serviceID: $serviceID, environmentID: $environmentID, domain: $domain, isGenerated: $isGenerated) {
+				domain
 			}
 		}`,
 		"variables": map[string]interface{}{
@@ -35,5 +35,5 @@ func (r *CreateDomainRequest) ToRequest() (map[string]interface{}, error) {
 }
 
 type CreateDomainResponse struct {
-	DomainID string `json:"_id"`
+	Domain string `json:"domain"`
 }

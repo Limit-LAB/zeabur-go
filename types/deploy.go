@@ -17,3 +17,7 @@ func NewDeployRequest(projectID string, serviceID string, environmentID string, 
 		CodeZip:       codeZip,
 	}
 }
+
+type DeployResponse struct {
+	DashUrl string `json:"url"`
+}

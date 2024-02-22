@@ -47,7 +47,6 @@ func doRequest[RequestT types.ToGraphQLRequest, ResponseWrapper any](
 	}
 
 	var reader io.Reader
-
 	if resp.Header.Get("Content-Encoding") == "gzip" {
 		grd, err := gzip.NewReader(resp.Body)
 		if err != nil {
@@ -64,6 +63,9 @@ func doRequest[RequestT types.ToGraphQLRequest, ResponseWrapper any](
 	var rs data
 	if err := json.NewDecoder(reader).Decode(&rs); err != nil {
 		return nil, err
+	}
+	if rs.Data == nil {
+		return nil, fmt.Errorf("missing data field")
 	}
 	return rs.Data, nil
 }
