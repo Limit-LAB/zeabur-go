@@ -19,7 +19,7 @@ func TestHelper_DeployProject(t *testing.T) {
 	}
 
 	domain, err := helper.DeployZipProject(context.Background(),
-		code, os.Getenv("SERVICE_NAME"), "test-service",
+		code, os.Getenv("SERVICE_NAME"), os.Getenv("SERVICE_NAME"),
 	)
 	if err != nil {
 		t.Fatal(err)
