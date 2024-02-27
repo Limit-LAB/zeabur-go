@@ -13,7 +13,7 @@ import (
 	"github.com/limit-lab/zeabur-go/types"
 )
 
-func (c *Client) Deploy(ctx context.Context, req *types.DeployRequest) (*types.DeployResponse, error) {
+func (c *Client) DeployZip(ctx context.Context, req *types.DeployRequest) (*types.DeployResponse, error) {
 	body := new(bytes.Buffer)
 	writer := multipart.NewWriter(body)
 	err := writer.WriteField("environment", req.EnvironmentID)

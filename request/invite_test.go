@@ -18,5 +18,5 @@ func TestClient_Invite(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	fmt.Println(resp)
+	fmt.Println(*resp)
 }

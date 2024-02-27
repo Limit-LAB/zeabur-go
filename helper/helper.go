@@ -19,7 +19,7 @@ func NewHelper(client *request.Client) *Helper {
 	}
 }
 
-func (h *Helper) DeployProject(ctx context.Context,
+func (h *Helper) DeployZipProject(ctx context.Context,
 	codeZip io.Reader, serviceName, domainName string) (string, error) {
 	projectResp, err := h.c.CreateProject(ctx,
 		types.NewCreateProjectRequest(types.RegionSfo1))
@@ -48,7 +48,7 @@ func (h *Helper) DeployProject(ctx context.Context,
 		envResp.Environments[0].ID,
 		codeZip,
 	)
-	_, err = h.c.Deploy(ctx, deployReq)
+	_, err = h.c.DeployZip(ctx, deployReq)
 	if err != nil {
 		return "", fmt.Errorf("failed to deploy project: %w", err)
 	}
