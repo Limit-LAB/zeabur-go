@@ -27,8 +27,8 @@ func (h *Helper) DeployZipProject(ctx context.Context,
 		return "", fmt.Errorf("failed to create project: %w", err)
 	}
 
-	envResp, err := h.c.GetEnvironment(ctx,
-		types.NewGetEnvironmentRequest(projectResp.ProjectID))
+	envResp, err := h.c.GetEnvironments(ctx,
+		types.NewGetEnvironmentsRequest(projectResp.ProjectID))
 	if err != nil {
 		return "", fmt.Errorf("failed to get environment: %w", err)
 	}

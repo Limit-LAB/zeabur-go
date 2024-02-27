@@ -1,16 +1,16 @@
 package types
 
-type GetEnvironmentRequest struct {
+type GetEnvironmentsRequest struct {
 	ProjectID string
 }
 
-func NewGetEnvironmentRequest(projectID string) *GetEnvironmentRequest {
-	return &GetEnvironmentRequest{
+func NewGetEnvironmentsRequest(projectID string) *GetEnvironmentsRequest {
+	return &GetEnvironmentsRequest{
 		ProjectID: projectID,
 	}
 }
 
-func (r *GetEnvironmentRequest) ToRequest() (map[string]interface{}, error) {
+func (r *GetEnvironmentsRequest) ToRequest() (map[string]interface{}, error) {
 	return map[string]interface{}{
 		"query": `query GetEnvironment($projectID: ObjectID!) {
 			environments(projectID: $projectID) {
@@ -23,7 +23,7 @@ func (r *GetEnvironmentRequest) ToRequest() (map[string]interface{}, error) {
 	}, nil
 }
 
-type GetEnvironmentResponse struct {
+type GetEnvironmentsResponse struct {
 	Environments []Environment `json:"environments"`
 }
 
