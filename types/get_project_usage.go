@@ -1,7 +1,5 @@
 package types
 
-import "fmt"
-
 type GroupByEntity string
 
 const (
@@ -30,8 +28,8 @@ func NewGetProjectUsageRequest(projectID string) *GetProjectUsageRequest {
 
 func (r *GetProjectUsageRequest) ToRequest() (map[string]interface{}, error) {
 	return map[string]interface{}{
-		"query": fmt.Sprintf(`query GetProjectUsage($projectID: ObjectID!) {
-			projectUsage(projectID: $projectID, usageGroupByEntity: %s) {
+		"query": `query GetProjectUsage($projectID: ObjectID!, $usageGroupByEntity: UsageGroupByEntity!) {
+			projectUsage(projectID: $projectID, usageGroupByEntity: $usageGroupByEntity) {
 				usages {
 					entity
 					usage
@@ -39,9 +37,10 @@ func (r *GetProjectUsageRequest) ToRequest() (map[string]interface{}, error) {
 				periodStart
 				periodEnd
 			}
-		}`, r.UsageGroupByEntity),
+		}`,
 		"variables": map[string]interface{}{
-			"projectID": r.ProjectID,
+			"projectID":          r.ProjectID,
+			"usageGroupByEntity": r.UsageGroupByEntity,
 		},
 	}, nil
 }
