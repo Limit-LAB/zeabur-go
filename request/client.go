@@ -3,6 +3,7 @@ package request
 import (
 	"net/http"
 	"net/url"
+	"time"
 )
 
 const API_PATH = "https://gateway.zeabur.com"
@@ -19,8 +20,10 @@ func NewClient(apiKey string) *Client {
 		panic(err)
 	}
 	return &Client{
-		apiKey:     apiKey,
-		apiPath:    url,
-		httpClient: &http.Client{},
+		apiKey:  apiKey,
+		apiPath: url,
+		httpClient: &http.Client{
+			Timeout: 30 * time.Second,
+		},
 	}
 }
